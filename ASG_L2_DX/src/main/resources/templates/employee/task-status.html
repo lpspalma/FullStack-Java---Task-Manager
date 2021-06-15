@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Status</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+</head>
+<body>
+<h1 class="top-title">Status</h1>
+<div th:replace="fragments/menu :: employee-menu">menu goes here</div>
+<hr/><br/>
+<table style="width:100%">
+    <tr>
+        <th>Task ID</th>
+        <th>Employee ID</th>
+        <th>Status</th>
+    </tr>
+    <tr>
+    <tr th:each="task,state : ${taskList}">
+        <td th:text="${task.id}" th:id="task_id+${state.count}">Task ID here</td>
+        <td th:text="${task.empId}" th:id="emp_id+${state.count}">Employee ID here</td>
+        <td th:text="${task.status}" th:id="task_status+${state.count}">Task Status here</td>
+</table>
+<div class="align-text-center">
+    <h2 class="has-error" th:if="${taskList.size()==0}" id="error" th:text="${'No Task'}">Error</h2>
+</div>
+</body>
+</html>

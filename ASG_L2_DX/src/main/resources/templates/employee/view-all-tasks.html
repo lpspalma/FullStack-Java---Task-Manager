@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View Task</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+</head>
+<body>
+<h1 class="top-title">View Task</h1>
+<hr/>
+<div th:replace="fragments/menu :: employee-menu">menu goes here</div>
+<hr/><br/>
+<table style="width:100%">
+    <tr>
+        <th>Task ID</th>
+        <th>Task Name</th>
+        <th>Description</th>
+        <th>Due Days (Days)</th>
+    </tr>
+    <tr>
+    <tr th:each="task,state : ${taskList}">
+        <td th:text="${task.id}" th:id="task_id+${state.count}">Task ID here</td>
+        <td th:text="${task.name}" th:id="task_name+${state.count}">Task Name here</td>
+        <td th:text="${task.description}" th:id="task_desc+${state.count}">Task Descr. here</td>
+        <td th:text="${task.dueTime}" th:id="task_duetime+${state.count}" >Due Time here</td>
+        <td><a th:href="@{change/{id}(id=${task.id})}">Change task</a></td>
+    </tr>
+</table>
+
+<div class="align-text-center">
+    <h2 class="has-error" th:if="${taskList.size()==0}" id="error" th:text="${'No Task'}">Error</h2>
+</div>
+
+</body>
+</html>

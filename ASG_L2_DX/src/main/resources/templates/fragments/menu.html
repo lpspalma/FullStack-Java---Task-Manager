@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div class="menu" th:fragment="manager-menu">
+    <a th:href="@{home}">Home</a>
+    <p>||</p>
+    <a th:href="@{addtask}">Add Task</a>
+    <p>||</p>
+    <a th:href="@{viewalltasks}">View All Tasks</a>
+    <p>||</p>
+    <a th:href="@{assigntask}">Assign Task </a>
+    <p>||</p>
+    <a th:href="@{reviewtask}">Review Task</a>
+    <p>||</p>
+    <form class="logout" id="logoutManager" method="post" th:action="@{/logout}">
+        <a onclick="javascript: document.getElementById('logoutManager').submit()">Logout</a>
+    </form>
+
+</div>
+<div class="menu" th:fragment="employee-menu">
+    <a th:href="@{home}">Home</a>
+    <p>||</p>
+    <a th:href="@{viewalltasks}">View All Tasks</a>
+    <p>||</p>
+    <a th:href="@{status}">Status</a>
+    <p>||</p>
+    <form class="logout" id="logoutEmployee" method="post" th:action="@{/logout}">
+        <a onclick="javascript: document.getElementById('logoutEmployee').submit()">Logout</a>
+    </form>
+</div>
+
+</body>
+</html>

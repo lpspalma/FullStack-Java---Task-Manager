@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Assign Task</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+</head>
+<body>
+<h1 class="top-title">Assign Task</h1>
+<hr/>
+<div th:replace="fragments/menu :: manager-menu">menu goes here</div>
+<hr/><br/>
+<div class="align-page">
+    <form th:action="@{assigntask}" method="post">
+        <div class="has-error" id="error"><span th:text="${error}"></span></div><!--arrumar a mensagem de erro tem duas aqui-->
+        <br/>
+        <label>Task ID: </label>
+        <input type="text" id="taskid" th:name="taskId" autofocus="true">
+        <br/><br/>
+        <label>Employee ID: </label>
+        <input type="text" id="empid" th:name="employeeId">
+        <br/><br/>
+        <input type="submit" id="assign" value="ASSIGN">
+        <br/><br/>
+    </form>
+
+</div>
+
+</body>
+</html>

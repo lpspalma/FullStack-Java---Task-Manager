@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Task</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+</head>
+<body>
+<div>
+    <h1 class="top-title">Add Task</h1>
+    <hr/>
+    <div th:replace="fragments/menu :: manager-menu">menu goes here</div>
+    <hr/><br/>
+    <div class="align-page">
+        <form th:object="${taskForm}" th:action="@{addtask}" method="post">
+            <div class="has-error" id="error"><span th:text="${error}"></span></div>
+            <label>Task Name: </label>
+            <input type="text" id="name" th:field="*{name}">
+            <br/><br/>
+            <label>Description: </label>
+            <input type="text" id="description" th:field="*{description}">
+            <br/><br/>
+            <label>Due Time: </label>
+            <input type="text" id="duetime"  th:field="*{dueTime}">
+            <br/><br/>
+            <input type="submit" id="add" value="ADD">
+            <br/><br/>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+    <script th:src="@{/javascript/jquery.min.js}"></script>
+    <script th:src="@{/javascript/myJquery.js}"></script>
+</head>
+<body>
+<h1 class="top-title">Login</h1>
+<hr/>
+<div class="align-page">
+    <form th:action="@{login}" method="post" id="loginForm" name="loginForm">
+        <br/>
+        <label>User Name: </label>
+        <input type="text" id="name" name="username" autofocus="true">
+        <br/><br/>
+        <label>Password: </label>
+        <input type="password" id="password" name="password">
+        <br/><br/>
+        <button id="login" name="login">LOGIN</button>
+
+        <br/><br/>
+        <a th:href="@{register}"><input id="register" type=button value='REGISTER'></a>
+    </form>
+</div>
+<div class="align-text-center">
+    <h2 class="has-error" th:if="${loginError}" id="error" th:text="${'Invalid Details'}">Error</h2>
+</div>
+
+</body>
+</html>

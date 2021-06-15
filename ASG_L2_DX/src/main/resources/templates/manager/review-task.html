@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Review Task</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+</head>
+<body>
+<h1 class="top-title">Review Task</h1>
+<hr/>
+<div th:replace="fragments/menu :: manager-menu">menu goes here</div>
+<div>
+    <hr/><br/>
+    <table style="width:100%">
+        <tr>
+            <th>Task no</th>
+            <th>Emp id</th>
+            <th>Status</th>
+        </tr>
+        <tr th:each="review,state : ${reviewList}">
+            <form th:action="@{reviewtask/{id}(id=${review.id})}" method="post">
+                <td th:text="${review.id}" th:id="task_id+${state.count}" th:name="taskId" th:value="${review.id}" >Task ID here</td>
+
+                <td th:text="${review.empId}" th:id="emp_id+${state.count}">User ID here</td>
+                <td>
+                    <select th:id="status_+${state.count}" required="required" th:name="status">
+                        <option value="accept">Accept</option>
+                        <option value="reject">Reject</option>
+                    </select>
+                </td>
+                <td><input type="submit" th:id="review_+${state.count}" value="REVIEW"></td>
+            </form>
+        </tr>
+    </table>
+    <div class="align-text-center">
+        <h2 class="has-error" th:if="${reviewList.size()==0}" id="error" th:text="${'No Task'}">Error</h2>
+    </div>
+
+</div>
+
+</body>
+</html>

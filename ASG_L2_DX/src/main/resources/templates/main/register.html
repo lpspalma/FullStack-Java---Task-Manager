@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+</head>
+<body>
+<h1 class="top-title">Register</h1>
+<hr/>
+<div class="align-page">
+    <form th:object="${userForm}" th:action="@{register}" method="post">
+        <div> <span class="has-error" th:if="${#fields.hasErrors('passwordConfirm')}" th:errors="*{passwordConfirm}"></span></div>
+        <label>User Name: </label>
+        <input type="text" id="name"  th:field="*{username}" placeholder="Enter username" autofocus="true">
+        <span class="has-error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+        <br/><br/>
+        <label>Password: </label>
+        <input type="password" id="password"  th:field="*{password}" placeholder="Enter Password" maxlength="30">
+        <span class="has-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+        <br/><br/>
+        <label>Confirm Password: </label>
+        <input type="password" id="cpassword" th:field="*{passwordConfirm}" placeholder="Confirm your Password" maxlength="30">
+        <br/><br/>
+        <input type="submit" id="register" value="REGISTER">
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View All Task</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+</head>
+<body>
+<div>
+    <h1 class="top-title">View All Task</h1>
+    <hr/>
+    <div th:replace="fragments/menu :: manager-menu">menu goes here</div>
+    <hr/><br/>
+    <table style="width:100%">
+        <tr>
+            <th>Task ID</th>
+            <th>Task Name</th>
+            <th>Description</th>
+            <th>Due Days</th>
+        </tr>
+        <tr>
+        <tr th:each="task,state : ${taskList}">
+            <td th:text="${task.id}" th:id="taskid_+${state.count}">Task ID here</td>
+            <td th:text="${task.name}" th:id="taskname_+${state.count}">Task Name here</td>
+            <td th:text="${task.description}" th:id="desc_+${state.count}">Task Descr. here</td>
+            <td th:text="${task.dueTime}" th:id="duetime_+${state.count}" >Due Time here</td>
+            <td><a th:href="@{viewalltasks/{id}(id=${task.id})}">Delete</a></td>
+    </table>
+
+    </div>
+    <div class="align-text-center">
+        <h2 class="has-error" th:if="${taskList.size()==0}" id="error" th:text="${'No Task'}">Error</h2>
+    </div>
+</div>
+</body>
+</html>
